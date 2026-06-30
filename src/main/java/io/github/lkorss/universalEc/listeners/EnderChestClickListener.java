@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class EnderChestClickListener implements Listener {
@@ -20,21 +21,30 @@ public class EnderChestClickListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+
+        if (event.getHand() != EquipmentSlot.HAND) {
+            return;
+        }
+
         ItemStack item = event.getItem();
+        if (item == null || item.getType() != Material.ENDER_CHEST) {
+            return;
+        }
 
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (item != null && item.getType() == Material.ENDER_CHEST) {
+        if (event.getAction() == Action.RIGHT_CLICK_AIR) {
 
-                if (!player.hasPermission("universalec.use.click")) {
-                    if (!plugin.getConfig().getBoolean("silent-mode.on-click-hand", true)) {
-                        player.sendMessage(plugin.getMessageManager().getMessage("no-permission"));
-                    }
-                    return;
+            if (!player.hasPermission("universalec.use.click")) {
+                if (!plugin.getConfig().getBoolean("silent-mode.no-permission.on-click-hand", true)) {
+                    player.sendMessage(plugin.getMessageManager().getMessage("no-permission"));
                 }
+                return;
+            }
 
-                event.setCancelled(true);
-                player.openInventory(player.getEnderChest());
-                plugin.playEnderChestSound(player);
+            event.setCancelled(true);
+            player.openInventory(player.getEnderChest());
+            plugin.playEnderChestSound(player);
+
+            if (!plugin.getConfig().getBoolean("silent-mode.on-success-open.on-click-hand", true)) {
                 player.sendMessage(plugin.getMessageManager().getMessage("opened-via-click"));
             }
         }

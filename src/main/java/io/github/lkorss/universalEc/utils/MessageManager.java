@@ -36,7 +36,14 @@ public class MessageManager {
         if (msg == null) {
             return "§c[Missing message: " + key + "]";
         }
-        return prefix + translateColor(msg);
+
+        boolean usePrefix = plugin.getConfig().getBoolean("prefix-enabled", true);
+
+        if (usePrefix) {
+            return prefix + translateColor(msg);
+        } else {
+            return translateColor(msg);
+        }
     }
 
     @SuppressWarnings("deprecation")

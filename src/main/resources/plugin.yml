@@ -1,28 +1,28 @@
 name: UniversalEc
-version: '1.0-SNAPSHOT'
+version: '1.1'
 main: io.github.lkorss.universalEc.UniversalEc
 api-version: '1.21'
 author: lkorss
 website: https://github.com/lkorss/UniversalEc
-description: Удобный плагин на мобильные эндер-сундуки для вашего сервера!
+description: A useful plugin for mobile ender chests for your server!
 
 commands:
   ec:
-    description: Открыть эндер-сундук дистанционно.
+    description: Open an ender chest remotely.
     permission: universalec.command.ec
     aliases: [enderchest, echest]
   unec:
-    description: Управление плагином UniversalEc.
+    description: Managing the UniversalEc plugin.
     permission: universalec.admin
     aliases: [universalec]
 
 permissions:
   universalec.command.ec:
-    description: Позволяет открывать эндер-сундук командой /ec
+    description: Allows you to open an ender chest with the /ec command.
     default: op
   universalec.use.click:
-    description: Позволяет открывать эндер-сундук кликом правой кнопки мыши
+    description: Allows you to open an ender chest by right-clicking.
     default: op
   universalec.admin:
-    description: Доступ к перезагрузке плагина (/unec reload)
+    description: Access to reload the plugin (/unec reload)
     default: op

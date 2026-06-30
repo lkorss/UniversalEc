@@ -26,7 +26,7 @@ public class EcCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (!player.hasPermission("universalec.command.ec")) {
-            if (!plugin.getConfig().getBoolean("silent-mode.on-command-ec", false)) {
+            if (!plugin.getConfig().getBoolean("silent-mode.no-permission.on-command-ec", false)) {
                 player.sendMessage(plugin.getMessageManager().getMessage("no-permission"));
             }
             return true;
@@ -39,8 +39,9 @@ public class EcCommand implements CommandExecutor {
 
         player.openInventory(player.getEnderChest());
         plugin.playEnderChestSound(player);
-        player.sendMessage(plugin.getMessageManager().getMessage("opened-via-command"));
-
+        if (!plugin.getConfig().getBoolean("silent-mode.on-success-open.on-command-ec", false)) {
+            player.sendMessage(plugin.getMessageManager().getMessage("opened-via-command"));
+        }
         return true;
     }
 }

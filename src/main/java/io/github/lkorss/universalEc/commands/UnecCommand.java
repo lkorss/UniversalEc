@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class UnecCommand implements CommandExecutor {
+
     private final UniversalEc plugin;
 
     public UnecCommand(UniversalEc plugin) {
@@ -16,19 +17,19 @@ public class UnecCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission("universalec.admin")) {
-            if (!plugin.getConfig().getBoolean("silent-mode.on-command-admin", false)) {
+            if (!plugin.getConfig().getBoolean("silent-mode.no-permission.on-command-admin", false)) {
                 sender.sendMessage(plugin.getMessageManager().getMessage("no-permission"));
             }
             return true;
         }
 
         if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-            plugin.reloadPluginConfig(); // Метод перезагрузки (напишем ниже)
+            plugin.reloadPluginConfig();
             sender.sendMessage(plugin.getMessageManager().getMessage("config-reloaded"));
             return true;
         }
 
-        sender.sendMessage("§dUniversalEc §7| Используйте: §e/unec reload");
+        sender.sendMessage(plugin.getMessageManager().getMessage("unec-usage"));
         return true;
     }
 }

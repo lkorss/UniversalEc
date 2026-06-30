@@ -22,7 +22,6 @@ public final class UniversalEc extends JavaPlugin {
 
         this.messageManager = new MessageManager(this);
 
-        // Регистрация команды для игроков
         if (getCommand("ec") != null) {
             getCommand("ec").setExecutor(new EcCommand(this));
         }
@@ -58,7 +57,8 @@ public final class UniversalEc extends JavaPlugin {
 
             player.playSound(player.getLocation(), sound, volume, pitch);
         } catch (IllegalArgumentException e) {
-            getLogger().warning("Failed to play sound! Check sound.name in config.yml. Error: " + soundName);
+            String errorMsg = getMessageManager().getMessage("sound-error");
+            getLogger().warning(errorMsg + soundName);
         }
     }
 

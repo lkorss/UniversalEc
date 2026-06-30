@@ -5,3 +5,5 @@ must-have-chest: "&cЧтобы открыть эндер-сундук, он до
 opened-via-command: "&aВы успешно открыли свой Эндер-сундук!"
 opened-via-click: "&aВы открыли Эндер-сундук из руки!"
 config-reloaded: "&aКонфигурация и файлы локализации успешно перезагружены!"
+unec-usage: "&dUniversalEc &7| Используйте: &e/unec reload"
+sound-error: "Не удалось воспроизвести звук! Проверьте sound.name в config.yml. Ошибка: "
