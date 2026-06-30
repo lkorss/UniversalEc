@@ -1,0 +1,7 @@
+prefix: "&8[&dUniversalEc&8] "
+no-permission: "&cYou do not have permission to do this!"
+only-players: "&cThis command can only be executed by players!"
+must-have-chest: "&cYou must have an Ender Chest in your inventory to open it!"
+opened-via-command: "&aYou have successfully opened your Ender Chest!"
+opened-via-click: "&aYou opened the Ender Chest from your hand!"
+config-reloaded: "&aConfiguration and localization files have been successfully reloaded!"

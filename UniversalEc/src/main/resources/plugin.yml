@@ -1,0 +1,28 @@
+name: UniversalEc
+version: '1.0-SNAPSHOT'
+main: io.github.lkorss.universalEc.UniversalEc
+api-version: '1.21'
+author: lkorss
+website: https://github.com/lkorss/UniversalEc
+description: Удобный плагин на мобильные эндер-сундуки для вашего сервера!
+
+commands:
+  ec:
+    description: Открыть эндер-сундук дистанционно.
+    permission: universalec.command.ec
+    aliases: [enderchest, echest]
+  unec:
+    description: Управление плагином UniversalEc.
+    permission: universalec.admin
+    aliases: [universalec]
+
+permissions:
+  universalec.command.ec:
+    description: Позволяет открывать эндер-сундук командой /ec
+    default: op
+  universalec.use.click:
+    description: Позволяет открывать эндер-сундук кликом правой кнопки мыши
+    default: op
+  universalec.admin:
+    description: Доступ к перезагрузке плагина (/unec reload)
+    default: op
